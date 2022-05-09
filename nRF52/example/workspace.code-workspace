@@ -2,15 +2,90 @@
 	"folders": [
 		{
 			"path": "."
+		},
+		{
+			"name": "hello_world",
+			"path": "hello_world"
+		},
+		{
+			"name": "synchronization",
+			"path": "synchronization"
+		},
+		{
+			"name": "philosophers",
+			"path": "philosophers"
+		},
+		{
+			"name": "blinky_pwm",
+			"path": "blinky_pwm"
+		},
+		{
+			"name": "button",
+			"path": "button"
+		},
+		{
+			"name": "fade_led",
+			"path": "fade_led"
+		},
+		{
+			"name": "threads",
+			"path": "threads"
+		},
+		{
+			"name": "can",
+			"path": "can"
+		},
+		{
+			"name": "getchar",
+			"path": "getchar"
+		},
+		{
+			"name": "getline",
+			"path": "getline"
+		},
+		{
+			"name": "fat_fs",
+			"path": "fat_fs"
+		},
+		{
+			"name": "openamp",
+			"path": "openamp"
+		},
+		{
+			"name": "nvs",
+			"path": "nvs"
+		},
+		{
+			"name": "task_wdt",
+			"path": "task_wdt"
+		},
+		{
+			"name": "hid-mouse",
+			"path": "hid-mouse"
+		},
+		{
+			"name": "lz4",
+			"path": "lz4"
 		}
 	],
 	"settings": {
 		"nrf-connect.topdir": "${nrf-connect.sdk:1.9.1}",
 		"nrf-connect.toolchain.path": "${nrf-connect.toolchain:1.9.1}",
-		"nrf-connect.applications": [
-			"${workspaceFolder}\\hello_world",
-			"${workspaceFolder}\\blinky",
-			"${workspaceFolder}\\peripheral_uart"
-		]
+		"nrf-connect.applications": [],
+		"files.associations": {
+			"zephyr.h": "c",
+			"device.h": "c",
+			"pwm.h": "c",
+			"app_a.h": "c",
+			"app_b.h": "c",
+			"cstdlib": "c",
+			"sample_driver.h": "c",
+			"app_shared.h": "c",
+			"log.h": "c",
+			"enc.h": "c",
+			"cfb.h": "c",
+			"display.h": "c",
+			"usb_audio.h": "c"
+		}
 	}
 }
