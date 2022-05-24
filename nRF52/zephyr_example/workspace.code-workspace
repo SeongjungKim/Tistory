@@ -32,10 +32,6 @@
 			"path": "threads"
 		},
 		{
-			"name": "can",
-			"path": "can"
-		},
-		{
 			"name": "getchar",
 			"path": "getchar"
 		},
@@ -46,10 +42,6 @@
 		{
 			"name": "fat_fs",
 			"path": "fat_fs"
-		},
-		{
-			"name": "openamp",
-			"path": "openamp"
 		},
 		{
 			"name": "nvs",
@@ -66,12 +58,38 @@
 		{
 			"name": "lz4",
 			"path": "lz4"
+		},
+		{
+			"name": "battery",
+			"path": "battery"
+		},
+		{
+			"name": "dmic",
+			"path": "dmic"
+		},
+		{
+			"name": "alarm",
+			"path": "alarm"
+		},
+		{
+			"name": "crypto",
+			"path": "crypto"
+		},
+		{
+			"name": "flash_shell",
+			"path": "flash_shell"
+		},
+		{
+			"name": "spi_bitbang",
+			"path": "spi_bitbang"
 		}
 	],
 	"settings": {
 		"nrf-connect.topdir": "${nrf-connect.sdk:1.9.1}",
 		"nrf-connect.toolchain.path": "${nrf-connect.toolchain:1.9.1}",
-		"nrf-connect.applications": [],
+		"nrf-connect.applications": [
+			"${workspaceFolder}\\mutex"
+		],
 		"files.associations": {
 			"zephyr.h": "c",
 			"device.h": "c",
@@ -85,7 +103,13 @@
 			"enc.h": "c",
 			"cfb.h": "c",
 			"display.h": "c",
-			"usb_audio.h": "c"
+			"usb_audio.h": "c",
+			"*.tcc": "c",
+			"fstream": "c",
+			"iosfwd": "c",
+			"istream": "c",
+			"ostream": "c",
+			"sstream": "c"
 		}
 	}
 }

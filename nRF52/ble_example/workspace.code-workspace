@@ -1,0 +1,99 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"name": "central_and_peripheral_hr",
+			"path": "central_and_peripheral_hr"
+		},
+		{
+			"name": "peripheral_hr_coded",
+			"path": "peripheral_hr_coded"
+		},
+		{
+			"name": "peripheral_uart",
+			"path": "peripheral_uart"
+		},
+		{
+			"name": "crypto",
+			"path": "..\\zephyr_example\\crypto"
+		},
+		{
+			"name": "central_bas",
+			"path": "central_bas"
+		},
+		{
+			"name": "central_hr_coded",
+			"path": "central_hr_coded"
+		},
+		{
+			"name": "central_smp_client",
+			"path": "central_smp_client"
+		},
+		{
+			"name": "central_uart",
+			"path": "central_uart"
+		},
+		{
+			"name": "semaphore",
+			"path": "..\\zephyr_example\\semaphore"
+		},
+		{
+			"name": "fund_less7_exer3",
+			"path": "..\\..\\..\\..\\nRF_connect_SDK\\fund_less7_exer3"
+		},
+		{
+			"name": "fund_less7_exer1",
+			"path": "..\\..\\..\\..\\nRF_connect_SDK\\fund_less7_exer1"
+		},
+		{
+			"name": "fund_less4_exer3",
+			"path": "..\\..\\..\\..\\nRF_connect_SDK\\fund_less4_exer3"
+		},
+		{
+			"name": "fund_less4_exer2",
+			"path": "..\\..\\..\\..\\nRF_connect_SDK\\fund_less4_exer2"
+		},
+		{
+			"name": "fund_less3_exer2",
+			"path": "..\\..\\..\\..\\nRF_connect_SDK\\fund_less3_exer2"
+		},
+		{
+			"name": "fund_less5_exer1",
+			"path": "..\\..\\..\\..\\nRF_connect_SDK\\fund_less5_exer1"
+		},
+		{
+			"name": "enocean",
+			"path": "enocean"
+		},
+		{
+			"name": "hci_lpuart",
+			"path": "hci_lpuart"
+		},
+		{
+			"name": "llpm",
+			"path": "llpm"
+		},
+		{
+			"name": "multiple_adv_sets",
+			"path": "multiple_adv_sets"
+		}
+	],
+	"settings": {
+		"nrf-connect.topdir": "${nrf-connect.sdk:1.9.1}",
+		"nrf-connect.toolchain.path": "${nrf-connect.toolchain:1.9.1}",
+		"nrf-connect.applications": [
+			"${workspaceFolder}\\multiple_adv_sets"
+		],
+		"files.associations": {
+			"conn.h": "c",
+			"array": "c",
+			"string": "c",
+			"string_view": "c",
+			"dk_buttons_and_leds.h": "c",
+			"enocean.h": "c",
+			"latency.h": "c"
+		}
+	}
+}
