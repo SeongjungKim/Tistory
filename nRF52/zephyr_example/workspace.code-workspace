@@ -82,14 +82,84 @@
 		{
 			"name": "spi_bitbang",
 			"path": "spi_bitbang"
+		},
+		{
+			"name": "bootloader",
+			"path": "..\\bootloader_example\\bootloader"
+		},
+		{
+			"name": "hello_world",
+			"path": "..\\bootloader_example\\hello_world"
+		},
+		{
+			"name": "hello_world_test",
+			"path": "..\\..\\..\\..\\..\\ncs\\v1.9.1\\nrf\\samples\\hello_world_test"
+		},
+		{
+			"name": "at_client",
+			"path": "..\\..\\nRF91\\example\\at_client"
+		},
+		{
+			"name": "at_monitor",
+			"path": "..\\..\\nRF91\\example\\at_monitor"
+		},
+		{
+			"name": "aws_fota",
+			"path": "..\\..\\nRF91\\example\\aws_fota"
+		},
+		{
+			"name": "aws_iot",
+			"path": "..\\..\\nRF91\\example\\aws_iot"
+		},
+		{
+			"name": "gnss",
+			"path": "..\\..\\nRF91\\example\\gnss"
+		},
+		{
+			"name": "location",
+			"path": "..\\..\\nRF91\\example\\location"
+		},
+		{
+			"name": "https_client",
+			"path": "..\\..\\nRF91\\example\\https_client"
+		},
+		{
+			"name": "mqtt_simple",
+			"path": "..\\..\\nRF91\\example\\mqtt_simple"
+		},
+		{
+			"name": "asset_tracker_v2",
+			"path": "..\\..\\nRF91\\example\\asset_tracker_v2"
+		},
+		{
+			"name": "cloud_client",
+			"path": "..\\..\\nRF91\\example\\cloud_client"
+		},
+		{
+			"name": "smp_svr",
+			"path": "..\\ble_example\\smp_svr"
+		},
+		{
+			"name": "aws_iot",
+			"path": "..\\ble_example\\aws_iot"
+		},
+		{
+			"name": "peripheral_bms",
+			"path": "..\\ble_example\\peripheral_bms"
+		},
+		{
+			"name": "central_smp_client",
+			"path": "..\\ble_example\\central_smp_client"
+		},
+		{
+			"name": "central_bas",
+			"path": "..\\ble_example\\central_bas"
 		}
 	],
 	"settings": {
 		"nrf-connect.topdir": "${nrf-connect.sdk:1.9.1}",
 		"nrf-connect.toolchain.path": "${nrf-connect.toolchain:1.9.1}",
-		"nrf-connect.applications": [
-			"${workspaceFolder}\\mutex"
-		],
+		"nrf-connect.applications": [],
 		"files.associations": {
 			"zephyr.h": "c",
 			"device.h": "c",
@@ -109,7 +179,12 @@
 			"iosfwd": "c",
 			"istream": "c",
 			"ostream": "c",
-			"sstream": "c"
+			"sstream": "c",
+			"hw_unique_key.h": "c",
+			"AWS_IOT.H": "cpp",
+			"common.h": "c",
+			"bluetooth.h": "c",
+			"init.h": "c"
 		}
 	}
 }

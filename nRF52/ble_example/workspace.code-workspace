@@ -40,30 +40,6 @@
 			"path": "..\\zephyr_example\\semaphore"
 		},
 		{
-			"name": "fund_less7_exer3",
-			"path": "..\\..\\..\\..\\nRF_connect_SDK\\fund_less7_exer3"
-		},
-		{
-			"name": "fund_less7_exer1",
-			"path": "..\\..\\..\\..\\nRF_connect_SDK\\fund_less7_exer1"
-		},
-		{
-			"name": "fund_less4_exer3",
-			"path": "..\\..\\..\\..\\nRF_connect_SDK\\fund_less4_exer3"
-		},
-		{
-			"name": "fund_less4_exer2",
-			"path": "..\\..\\..\\..\\nRF_connect_SDK\\fund_less4_exer2"
-		},
-		{
-			"name": "fund_less3_exer2",
-			"path": "..\\..\\..\\..\\nRF_connect_SDK\\fund_less3_exer2"
-		},
-		{
-			"name": "fund_less5_exer1",
-			"path": "..\\..\\..\\..\\nRF_connect_SDK\\fund_less5_exer1"
-		},
-		{
 			"name": "enocean",
 			"path": "enocean"
 		},
@@ -78,13 +54,70 @@
 		{
 			"name": "multiple_adv_sets",
 			"path": "multiple_adv_sets"
+		},
+		{
+			"name": "nrf_dm",
+			"path": "nrf_dm"
+		},
+		{
+			"name": "peripheral_bms",
+			"path": "peripheral_bms"
+		},
+		{
+			"name": "peripheral_cts_client",
+			"path": "peripheral_cts_client"
+		},
+		{
+			"name": "peripheral_gatt_dm",
+			"path": "peripheral_gatt_dm"
+		},
+		{
+			"name": "throughput",
+			"path": "throughput"
+		},
+		{
+			"name": "aes_ccm",
+			"path": "..\\crypto_example\\aes_ccm"
+		},
+		{
+			"name": "sha256",
+			"path": "..\\crypto_example\\sha256"
+		},
+		{
+			"name": "event_manager",
+			"path": "..\\application_event_example\\event_manager"
+		},
+		{
+			"name": "at_client",
+			"path": "\\\\wsl$\\Ubuntu-20.04\\home\\davidkim\\ncs\\nrf\\samples\\nrf9160\\at_client"
+		},
+		{
+			"name": "at_client",
+			"path": "..\\..\\nRF91\\example\\at_client"
+		},
+		{
+			"name": "asset_tracker_v2.0",
+			"path": "..\\..\\nRF91\\example\\asset_tracker_v2.0"
+		},
+		{
+			"name": "peripheral_lbs",
+			"path": "..\\..\\nRF91\\example\\peripheral_lbs"
+		},
+		{
+			"name": "ble_dfu",
+			"path": "..\\bootloader_example\\ble_dfu"
+		},
+		{
+			"name": "zephyr",
+			"path": "..\\..\\..\\..\\..\\ncs\\v1.9.1\\bootloader\\mcuboot\\boot\\zephyr"
 		}
 	],
 	"settings": {
 		"nrf-connect.topdir": "${nrf-connect.sdk:1.9.1}",
 		"nrf-connect.toolchain.path": "${nrf-connect.toolchain:1.9.1}",
 		"nrf-connect.applications": [
-			"${workspaceFolder}\\multiple_adv_sets"
+			"c:\\Users\\davidkim\\Documents\\GitHub\\Tistory\\nRF52\\bootloader_example\\ble_dfu",
+			"${workspaceFolder:zephyr}"
 		],
 		"files.associations": {
 			"conn.h": "c",
@@ -93,7 +126,30 @@
 			"string_view": "c",
 			"dk_buttons_and_leds.h": "c",
 			"enocean.h": "c",
-			"latency.h": "c"
+			"latency.h": "c",
+			"dm_io.h": "c",
+			"dm.h": "c",
+			"mpsl_timeslot.h": "c",
+			"gatt.h": "c",
+			"throughput.h": "c",
+			"uuid.h": "c",
+			"aes.h": "c",
+			"cipher.h": "c",
+			"common.h": "c",
+			"build_info.h": "c",
+			"ack_event.h": "c",
+			"control_event.h": "c",
+			"*.tcc": "c",
+			"unordered_map": "c",
+			"fstream": "c",
+			"istream": "c",
+			"numeric": "c",
+			"ostream": "c",
+			"sstream": "c",
+			"config_event.h": "c",
+			"measurement_event.h": "c",
+			"five_sec_event.h": "c",
+			"sign_key.h": "c"
 		}
 	}
 }
