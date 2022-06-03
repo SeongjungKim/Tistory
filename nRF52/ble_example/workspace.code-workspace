@@ -110,6 +110,14 @@
 		{
 			"name": "zephyr",
 			"path": "..\\..\\..\\..\\..\\ncs\\v1.9.1\\bootloader\\mcuboot\\boot\\zephyr"
+		},
+		{
+			"name": "button",
+			"path": "..\\zephyr_example\\button"
+		},
+		{
+			"name": "nvs",
+			"path": "..\\zephyr_example\\nvs"
 		}
 	],
 	"settings": {
@@ -149,7 +157,15 @@
 			"config_event.h": "c",
 			"measurement_event.h": "c",
 			"five_sec_event.h": "c",
-			"sign_key.h": "c"
+			"sign_key.h": "c",
+			"lbs.h": "c",
+			"gatt_dm.h": "c",
+			"bas.h": "c",
+			"att.h": "c",
+			"types.h": "c",
+			"os_mgmt.h": "c",
+			"hrs.h": "c",
+			"flash_map.h": "c"
 		}
 	}
 }

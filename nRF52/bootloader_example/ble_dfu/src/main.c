@@ -14,21 +14,22 @@
 #include <zephyr.h>
 #include <zephyr/types.h>
 
+#include "img_mgmt/img_mgmt.h"
+#include "os_mgmt/os_mgmt.h"
+#include <mgmt/mcumgr/smp_bt.h>
+
+#include "spatch_ecg.h"
+#include "spatch_hr.h"
+#include "spatch_battery.h"
+
 #include <bluetooth/bluetooth.h>
 #include <bluetooth/conn.h>
 #include <bluetooth/gatt.h>
 #include <bluetooth/hci.h>
 #include <bluetooth/uuid.h>
-
-#include <bluetooth/services/lbs.h>
-
 #include <settings/settings.h>
 
 #include <dk_buttons_and_leds.h>
-
-#include "img_mgmt/img_mgmt.h"
-#include "os_mgmt/os_mgmt.h"
-#include <mgmt/mcumgr/smp_bt.h>
 
 #define DEVICE_NAME CONFIG_BT_DEVICE_NAME
 #define DEVICE_NAME_LEN (sizeof(DEVICE_NAME) - 1)
@@ -41,7 +42,9 @@
 
 #define USER_BUTTON DK_BTN1_MSK
 
-static bool app_button_state;
+static uint8_t app_live_state;
+static uint8_t app_db_state;
+static uint8_t app_motion_state;
 
 static const struct bt_data ad[] = {
     BT_DATA_BYTES(BT_DATA_FLAGS, (BT_LE_AD_GENERAL | BT_LE_AD_NO_BREDR)),
@@ -70,7 +73,6 @@ static void disconnected(struct bt_conn *conn, uint8_t reason) {
   dk_set_led_off(CON_STATUS_LED);
 }
 
-#ifdef CONFIG_BT_LBS_SECURITY_ENABLED
 static void security_changed(struct bt_conn *conn, bt_security_t level,
                              enum bt_security_err err) {
   char addr[BT_ADDR_LE_STR_LEN];
@@ -83,17 +85,13 @@ static void security_changed(struct bt_conn *conn, bt_security_t level,
     printk("Security failed: %s level %u err %d\n", addr, level, err);
   }
 }
-#endif
 
 BT_CONN_CB_DEFINE(conn_callbacks) = {
     .connected = connected,
     .disconnected = disconnected,
-#ifdef CONFIG_BT_LBS_SECURITY_ENABLED
     .security_changed = security_changed,
-#endif
 };
 
-#if defined(CONFIG_BT_LBS_SECURITY_ENABLED)
 static void auth_passkey_display(struct bt_conn *conn, unsigned int passkey) {
   char addr[BT_ADDR_LE_STR_LEN];
 
@@ -131,25 +129,33 @@ static struct bt_conn_auth_cb conn_auth_callbacks = {
     .cancel = auth_cancel,
     .pairing_complete = pairing_complete,
     .pairing_failed = pairing_failed};
-#else
-static struct bt_conn_auth_cb conn_auth_callbacks;
-#endif
 
 static void app_led_cb(bool led_state) { dk_set_led(USER_LED, led_state); }
 
-static bool app_button_cb(void) { return app_button_state; }
+static uint8_t app_live_cb(void) { return app_live_state; }
 
-static struct bt_lbs_cb lbs_callbacs = {
+static uint8_t app_db_cb(void) { return app_db_state; }
+
+static uint8_t app_motion_cb(void) { return app_motion_state; }
+
+static struct bt_ECG_cb ECG_callbacs = {
     .led_cb = app_led_cb,
-    .button_cb = app_button_cb,
+    .live_data_cb = app_live_cb,
+    .db_data_cb = app_db_cb,
+    .motion_data_cb = app_motion_cb,
 };
 
 static void button_changed(uint32_t button_state, uint32_t has_changed) {
   if (has_changed & USER_BUTTON) {
-    uint32_t user_button_state = button_state & USER_BUTTON;
+    uint8_t user_button_state = button_state & USER_BUTTON;
 
-    bt_lbs_send_button_state(user_button_state);
-    app_button_state = user_button_state ? true : false;
+    bt_ECG_send_live_data(user_button_state + 1);
+    bt_ECG_send_db_data(user_button_state + 2);
+    bt_ECG_send_motion_data(user_button_state + 3);
+    
+    app_live_state = user_button_state;
+    app_db_state = user_button_state;
+    app_motion_state = user_button_state;
   }
 }
 
@@ -173,7 +179,7 @@ void main(void) {
   int blink_status = 0;
   int err;
 
-  printk("Starting Bluetooth Peripheral LBS example\n");
+  printk("Starting Bluetooth Peripheral ECG example\n");
 
   err = dk_leds_init();
   if (err) {
@@ -187,9 +193,9 @@ void main(void) {
     return;
   }
 
-  if (IS_ENABLED(CONFIG_BT_LBS_SECURITY_ENABLED)) {
+  //if (IS_ENABLED(CONFIG_BT_ECG_SECURITY_ENABLED)) {
     bt_conn_auth_cb_register(&conn_auth_callbacks);
-  }
+  //}
 
   err = bt_enable(NULL);
   if (err) {
@@ -203,9 +209,9 @@ void main(void) {
     settings_load();
   }
 
-  err = bt_lbs_init(&lbs_callbacs);
+  err = bt_ECG_init(&ECG_callbacs);
   if (err) {
-    printk("Failed to init LBS (err:%d)\n", err);
+    printk("Failed to init ECG (err:%d)\n", err);
     return;
   }
 
@@ -220,5 +226,8 @@ void main(void) {
   for (;;) {
     dk_set_led(RUN_STATUS_LED, (++blink_status) % 2);
     k_sleep(K_MSEC(RUN_LED_BLINK_INTERVAL));
+
+    hrs_notify();
+    bas_notify();
   }
 }

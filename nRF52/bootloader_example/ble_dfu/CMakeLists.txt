@@ -12,22 +12,12 @@ set(PM_STATIC_YML_FILE
 find_package(Zephyr REQUIRED HINTS $ENV{ZEPHYR_BASE})
 project(NONE)
 
-set(mcuboot_key_file ${CMAKE_CURRENT_LIST_DIR}/priv.pem)
-set(mcuboot_CONFIG_BOOT_SIGNATURE_KEY_FILE "\"${mcuboot_key_file}\"")
 
 # NORDIC SDK APP START
-target_sources(app PRIVATE
-  src/main.c
-)
-
-# Preinitialization related to Thingy:53 DFU
-target_sources_ifdef(CONFIG_BOARD_THINGY53_NRF5340_CPUAPP app PRIVATE
-  boards/thingy53.c
-)
-target_sources_ifdef(CONFIG_BOARD_THINGY53_NRF5340_CPUAPP_NS app PRIVATE
-  boards/thingy53.c
-)
-
+target_sources(app PRIVATE src/main.c)
+target_sources(app PRIVATE src/spatch_ecg.c)
+target_sources(app PRIVATE src/spatch_hr.c)
+target_sources(app PRIVATE src/spatch_battery.c)
 
 # NORDIC SDK APP END
 zephyr_library_include_directories(.)
